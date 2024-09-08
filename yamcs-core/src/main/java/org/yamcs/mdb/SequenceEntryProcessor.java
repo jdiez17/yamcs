@@ -195,7 +195,13 @@ public class SequenceEntryProcessor {
 
     private void extractIndirectParameterRefEntry(IndirectParameterRefEntry se) {
         ParameterInstanceRef pir = se.getParameterRef();
-        Value v = pcontext.getValue(pir);
+        Value v = null;
+        if (pir.getInstance() == 0) {
+            v = pcontext.getLastValueOfParameter(pir.getParameter());
+        } else {
+            v = pcontext.getValue(pir);
+        }
+
         if (v == null) {
             throw new XtceProcessingException("Cannot determine the value of " + pir
                     + " necessary to extract the indirect parameter ref entry");

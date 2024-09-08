@@ -149,6 +149,10 @@ public class ProcessingData {
         return tmParams;
     }
 
+    public ParameterValue getLastValueOfParameter(Parameter p) {
+        return tmParams.getLastInserted(p);
+    }
+
     public void addTmParam(ParameterValue pv) {
         tmParams.add(pv);
     }

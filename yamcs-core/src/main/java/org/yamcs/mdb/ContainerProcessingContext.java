@@ -70,6 +70,10 @@ public class ContainerProcessingContext {
         return pir.useCalibratedValue() ? pv.getEngValue() : pv.getRawValue();
     }
 
+    public Value getLastValueOfParameter(org.yamcs.xtce.Parameter p) {
+        return result.getLastValueOfParameter(p).getEngValue();
+    }
+
     public long getIntegerValue(IntegerValue iv) {
         if (iv instanceof FixedIntegerValue) {
             return ((FixedIntegerValue) iv).getValue();
